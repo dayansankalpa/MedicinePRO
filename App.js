@@ -1,11 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import LoginScreen from './screens/LoginScreen';
+import RegisterScreen from './screens/RegisterScreen';
 
 export default function App() {
+  const [isRegistering, setIsRegistering] = useState(false);
+
+  const handleSignupPress = () => {
+    setIsRegistering(true);
+  };
+
+  const handleBackToLoginPress = () => {
+    setIsRegistering(false);
+  };
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      {isRegistering ? (
+        <RegisterScreen handleBackToLoginPress={handleBackToLoginPress} />
+      ) : (
+        <LoginScreen handleSignupPress={handleSignupPress} />
+      )}
     </View>
   );
 }
@@ -13,8 +28,18 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  signup: {
+    marginTop: 20,
+  },
+  signupText: {
+    color: '#007AFF',
   },
 });
