@@ -1,38 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
-
 
 import Logo from '../assets/medicine-pharmacy.webp';
 
 export default function LoginScreen(props) {
-    const { handleSignupPress } = props;
+  const { handleSignupPress } = props;
 
-    return (
-        <View style={styles.container}>
-            <Image source={Logo} style={styles.logo} />
-            <Text style={styles.title}>MedicinePRO</Text>
-            <View style={styles.form}>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Email"
-                    keyboardType="email-address"
-                    autoCapitalize="none"
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Password"
-                    secureTextEntry={true}
-                    autoCapitalize="none"
-                />
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Log in</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.signup} onPress={handleSignupPress}>
-                    <Text style={styles.signupText}>Don't have an account? Sign up</Text>
-                </TouchableOpacity>
-            </View>
-        </View>
-    );
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLoginPress = () => {
+    if (email === 'dayansankalpa99@gmail.com' && password === 'password123') {
+      // successful login logic here
+    } else {
+      alert('Invalid username or password');
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <Image source={Logo} style={styles.logo} />
+      <Text style={styles.title}>MedicinePRO</Text>
+      <View style={styles.form}>
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          keyboardType="email-address"
+          autoCapitalize="none"
+          value={email}
+          onChangeText={setEmail}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          secureTextEntry={true}
+          autoCapitalize="none"
+          value={password}
+          onChangeText={setPassword}
+        />
+        <TouchableOpacity style={styles.button} onPress={handleLoginPress}>
+          <Text style={styles.buttonText}>Log in</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.signup} onPress={handleSignupPress}>
+          <Text style={styles.signupText}>Don't have an account? Sign up</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

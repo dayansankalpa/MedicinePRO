@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import HomeScreen from './screens/HomeScreen';
 
 export default function App() {
   const [isRegistering, setIsRegistering] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleSignupPress = () => {
     setIsRegistering(true);
@@ -14,12 +16,18 @@ export default function App() {
     setIsRegistering(false);
   };
 
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
+  };
+
   return (
     <View style={styles.container}>
-      {isRegistering ? (
+      {isLoggedIn ? (
+        <HomeScreen />
+      ) : isRegistering ? (
         <RegisterScreen handleBackToLoginPress={handleBackToLoginPress} />
       ) : (
-        <LoginScreen handleSignupPress={handleSignupPress} />
+        <LoginScreen handleSignupPress={handleSignupPress} handleLoginSuccess={handleLoginSuccess} />
       )}
     </View>
   );
