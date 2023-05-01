@@ -4,12 +4,14 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'reac
 import Logo from '../assets/medicine-pharmacy.webp';
 
 export default function RegisterScreen() {
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
     const handleRegister = () => {
-        if (email && password && confirmPassword && password === confirmPassword) {
+        if (name && email && password && confirmPassword && password === confirmPassword) {
+            console.log('Name:', name);
             console.log('Email:', email);
             console.log('Password:', password);
             console.log('Confirm Password:', confirmPassword);
@@ -27,6 +29,14 @@ export default function RegisterScreen() {
             <Image source={Logo} style={styles.logo} />
             <Text style={styles.title}>MedicinePRO</Text>
             <View style={styles.form}>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Name"
+                    keyboardType="text"
+                    autoCapitalize="none"
+                    value={name}
+                    onChangeText={(text) => setName(text)}
+                />
                 <TextInput
                     style={styles.input}
                     placeholder="Email"
