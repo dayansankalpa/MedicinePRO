@@ -1,53 +1,33 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import HomeScreen from './screens/HomeScreen';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
+
+const Stack = createStackNavigator();
 
 export default function App() {
-  const [isRegistering, setIsRegistering] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const handleSignupPress = () => {
-    setIsRegistering(true);
-  };
-
-  const handleBackToLoginPress = () => {
-    setIsRegistering(false);
-  };
-
-  const handleLoginSuccess = () => {
-    setIsLoggedIn(true);
-  };
-
   return (
-    <View style={styles.container}>
-      {isLoggedIn ? (
-        <HomeScreen />
-      ) : isRegistering ? (
-        <RegisterScreen handleBackToLoginPress={handleBackToLoginPress} />
-      ) : (
-        <LoginScreen handleSignupPress={handleSignupPress} handleLoginSuccess={handleLoginSuccess} />
-      )}
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerTitleStyle: { fontWeight: 'bold', fontSize: 20, color: '#62a2ef', },
+        }}
+      >
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Register" component={RegisterScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  signup: {
-    marginTop: 20,
-  },
-  signupText: {
-    color: '#007AFF',
+    backgroundColor: '#62a2ef',
   },
 });
