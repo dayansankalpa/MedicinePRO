@@ -157,12 +157,16 @@ const styles = StyleSheet.create({
   },
   paragraph: {
     fontSize: 18,
-    color: '#000',
+    color: '#878787',
     textAlign: 'center',
     marginTop: 50,
     marginBottom: 30,
     paddingVertical: 20,
-    paddingHorizontal: 20,
+    paddingHorizontal: 5,
+    borderWidth: 2,
+    borderRadius: 10,
+    borderColor: '#90BA55',
   },
+  
 
 });
