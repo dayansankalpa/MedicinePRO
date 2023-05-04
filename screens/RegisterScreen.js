@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
         fontSize: 28,
         fontWeight: 'bold',
         marginBottom: 20,
-        color: '#62a2ef',
+        color: '#12A5DA',
     },
     logo: {
         width: 180,
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
         flexGrow: 1,
     },
     button: {
-        backgroundColor: '#007AFF',
+        backgroundColor: '#90BA55',
         padding: 10,
         borderRadius: 4,
         marginTop: 10,
