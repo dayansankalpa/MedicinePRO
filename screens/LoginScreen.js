@@ -6,13 +6,13 @@ import Logo from '../assets/medicine-pharmacy.webp';
 
 export default function LoginScreen(props) {
     const { handleSignupPress, handleLoginSuccess } = props;
-  
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigation = useNavigation();
-  
+
     const handleLoginPress = () => {
-      if (email === 'dayansankalpa99@gmail.com' && password === 'password123') {
+      if (email === 'dayan' && password === '123') {
         handleLoginSuccess();
         setTimeout(() => {
           navigation.navigate('Home');
@@ -21,11 +21,11 @@ export default function LoginScreen(props) {
         alert('Invalid username or password');
       }
     };
-  
+
     const handleRegisterPress = () => {
       navigation.navigate('Register');
     };
-  
+
     return (
       <View style={styles.container}>
         <Image source={Logo} style={styles.logo} />
@@ -57,7 +57,7 @@ export default function LoginScreen(props) {
       </View>
     );
   }
-  
+
 
 const styles = StyleSheet.create({
     container: {
